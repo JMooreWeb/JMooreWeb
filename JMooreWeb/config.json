@@ -1,0 +1,12 @@
+﻿{
+	"ConnectionStrings": {
+		"DefaultConnection": "Server=localhost;Database=JMooreWeb;User Id=sa;Password=2admin@DEVNEW;MultipleActiveResultSets=true"
+	},
+	"LocalTest:skipSSL": true,
+	"Logging": {
+		"IncludeScopes": false,
+		"LogLevel": {
+			"Default": "Warning"
+		}
+	}
+}

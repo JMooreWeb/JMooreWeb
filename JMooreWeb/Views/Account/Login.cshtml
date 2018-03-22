@@ -1,0 +1,69 @@
+﻿@using System.Collections.Generic
+@using System.Linq
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Http.Authentication
+@model LoginViewModel
+@inject SignInManager<User> SignInManager
+
+@{
+   ViewData["Title"] = "Login";
+   Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+
+<div id="divForm" class="col-sm-6 col-sm-offset-3 l-form-5-box wow fadeInUp" style="display:none;">
+   <div class="l-form-5-top">
+      <div class="l-form-5-top-left">
+         <h3>JMooreWeb Manager</h3>
+         <p>Please enter your login credentials.</p>
+      </div>
+      <div class="l-form-5-top-right">
+         <i class="fa fa-user-secret"></i>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-md-12">
+         <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" autocomplete="off" style="margin: 0 10px;">
+
+            @Html.AntiForgeryToken()
+            @*<div asp-validation-summary="All" class="text-danger"></div>*@
+
+            <div class="form-group">
+               <label asp-for="UserNameEmail" class="sr-only"></label>
+               <input asp-for="UserNameEmail" class="l-form-5-username form-control" placeholder="Username or email..." />
+               <span asp-validation-for="UserNameEmail" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+               <label asp-for="Password" class="sr-only"></label>
+               <input asp-for="Password" class="l-form-5-password form-control" placeholder="Password..." />
+               <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+               <button type="submit" class="btn">
+                  <i class="fas fa-sign-in-alt"></i>&nbsp;Secure Login
+               </button>
+            </div>
+
+            <div class="row">
+               <div class="col-xs-5">
+                  <div class="form-group" style="text-align:left;">
+                     <a asp-action="ForgotPassword">Forgot your password?</a>&nbsp;<i class="fas fa-unlock"></i>
+                  </div>
+               </div>
+               <div class="col-xs-7">
+                  <div class="form-group" style="text-align:right;">
+                     <a href="https://www.bcpao.us">Brevard County Property Appraiser</a>&nbsp;<i class="fas fa-external-link-alt"></i>
+                  </div>
+               </div>
+            </div>
+
+         </form>
+      </div>
+   </div>
+</div>
+
+
+@section Scripts {
+   @await Html.PartialAsync("_ValidationScriptsPartial")
+}

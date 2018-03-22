@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>@ViewData["Title"]</title>
+   <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js"></script>
+   <environment include="Development">
+      <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+      @*<link rel="stylesheet" href="~/css/site.css" />*@
+   </environment>
+   <environment exclude="Development">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+            asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+      <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+   </environment>
+   @RenderSection("styles", required: false)
+</head>
+<body>
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">JMooreWeb Manager</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+         <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+               <a class="nav-link" asp-controller="Home" asp-action="Index">Dashboard</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" asp-controller="Upload" asp-action="Index">Upload</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" asp-controller="Permits" asp-action="Index">Review</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" asp-controller="Search" asp-action="Index">Search</a>
+            </li>
+            <li class="nav-item dropdown">
+               <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Manage
+               </a>
+               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" asp-controller="Users" asp-action="Index">Users</a>
+                  <a class="dropdown-item" asp-controller="Roles" asp-action="Index">Roles</a>
+               </div>
+            </li>
+         </ul>
+         @await Html.PartialAsync("_LoginPartial")
+      </div>
+   </nav>
+   <div style="margin: 15px 30px;">
+      @RenderBody()
+      <footer>
+         <p style="margin-top:20px;">&copy; Copyright 2017. JMooreWeb. All rights reserved.</p>
+      </footer>
+   </div>
+
+   <environment include="Development">
+      <script src="~/lib/jquery/dist/jquery.js"></script>
+      <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+      <script src="~/js/site.js" asp-append-version="true"></script>
+   </environment>
+
+   <environment exclude="Development">
+      <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+              asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+              asp-fallback-test="window.jQuery"
+              integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+              crossorigin="anonymous">
+      </script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+              asp-fallback-src="~/lib/popper.js/1.12.9/umd/popper.min.js"
+              asp-fallback-test="window.Popper"
+              integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+              crossorigin="anonymous">
+      </script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+              asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+              asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+              integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
+              crossorigin="anonymous">
+      </script>
+
+      <script src="~/js/site.min.js" asp-append-version="true"></script>
+   </environment>
+
+   @RenderSection("scripts", required: false)
+</body>
+</html>
